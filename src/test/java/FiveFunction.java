@@ -34,7 +34,7 @@ public class FiveFunction {
         System.out.println(function.apply(new Date()));
 
         /*
-         * Function
+         * BiPredicate
          * parameter <T, U>
          * return bool
          * */
