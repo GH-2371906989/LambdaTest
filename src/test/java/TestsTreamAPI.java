@@ -3,10 +3,7 @@ import com.gu.dto.Transaction;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class TestsTreamAPI {
@@ -27,6 +24,14 @@ public class TestsTreamAPI {
                 new Transaction(mario, 2012, 700),
                 new Transaction(alan, 2012, 950)
         );
+    }
+    /* 去重*/
+    @Test
+    public void test12(){
+        Map<String, String> map = new HashMap<String,String>();
+        map.put("11","11");
+
+
     }
 
     //1. 找出2011年发生的所有交易， 并按交易额排序（从低到高）
@@ -100,5 +105,8 @@ public class TestsTreamAPI {
                 .min((t1, t2) -> Integer.compare(t1.getValue(), t2.getValue()));
 
         System.out.println(op.get());
+    }
+
+    private class BeanUtil {
     }
 }
