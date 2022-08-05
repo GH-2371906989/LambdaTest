@@ -1,22 +1,24 @@
 import org.junit.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.scheduling.TaskScheduler;
+import org.springframework.scheduling.support.CronTrigger;
 
-import java.util.ArrayList;
-import java.util.Comparator;
-
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.util.concurrent.ScheduledFuture;
+@SpringBootTest
 public class landa {
+
+    @Autowired
+    TaskScheduler taskScheduler;
+    private ScheduledFuture future;
     @Test
     public void test1(){
-        Thread thread = new Thread(() -> {
-            System.out.println("test1");
-        });
-        thread.start();
-        Runnable runnable = new Runnable() {
-            @Override
-            public void run() {
-
-            }
-        };
-        new Thread(runnable).start();
+        System.out.println("taskScheduler = " + taskScheduler);
+        future = taskScheduler.schedule(()->{
+            System.out.println(new SimpleDateFormat("yyyy-MM-dd").format(LocalDate.now()));
+        },new CronTrigger("0/10 * * * * ?"));
 
     }
 }
